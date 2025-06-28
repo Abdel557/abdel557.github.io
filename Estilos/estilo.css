@@ -1,0 +1,225 @@
+/* Variables de diseño */
+:root {
+  --primary: #4a6bff;
+  --secondary: #6a5acd;
+  --accent: #00d1b2;
+  --dark: #0f0f13;
+  --darker: #08080b;
+  --light: #f0f0f0;
+  --lighter: #ffffff;
+  --text: #ffffff;
+  --text-secondary: #b8b8b8;
+  --card-bg: rgba(40, 40, 40, 0.7);
+  --image-bg: rgba(0, 0, 0, 0.3);
+  --header-gradient: linear-gradient(135deg, #4776E6, #8E54E9);
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Animaciones */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+/* Header */
+header {
+  background: var(--header-gradient);
+  color: white;
+  padding: 4rem 0 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(71, 118, 230, 0.4);
+}
+
+.title-animation {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #ff8a00, #e52e71, #dd2476);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+  animation: gradientShift 8s ease infinite;
+  background-size: 300% 300%;
+}
+
+.slogan {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  margin: 1rem 0 2rem;
+}
+
+.slogan .highlight {
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  padding: 0 8px;
+  border-radius: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  animation: pulse 3s infinite;
+}
+
+.header-icons {
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.header-icons i {
+  color: rgba(255,255,255,0.9);
+  transition: all 0.3s ease;
+  animation: shake 1.5s infinite;
+}
+
+.header-icons i:hover {
+  color: white;
+  transform: translateY(-5px) scale(1.2);
+}
+
+/* Categorías */
+.category {
+  background-color: var(--darker);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.category-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
+  animation: slideIn 0.6s ease-out;
+}
+
+.category-title i {
+  animation: bounce 2s infinite;
+}
+
+/* Grid de herramientas */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.tool-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de imágenes */
+.tool-img-container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--image-bg);
+}
+
+.tool-img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.tool-card:hover .tool-img {
+  transform: scale(1.1);
+}
+
+.tool-card h3 {
+  color: var(--light);
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.tool-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  min-height: 60px;
+}
+
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 10px 20px;
+  border
